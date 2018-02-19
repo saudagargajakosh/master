@@ -67,9 +67,25 @@
 					if(!empty($uri_segment[5]))
 					{
 						$popular = str_replace(" ", '-', $uri_segment[5]);
+						if($popular == 'General')
+						{
+							?>
+							<li><a href="<?php echo $url_mapper['feed/'] . $popular . '/' . $cat->slug; ?>" class="<?php echo $current; ?> col-md-12"><?php echo $cat->cat_name; ?></a></li>
+							<?php
+						}
+						?>
+						<li><a href="<?php echo $url_mapper['feed/'] . $cat->slug; ?>/" class="<?php echo $current; ?> col-md-12"><?php echo $cat->cat_name; ?></a></li>
+						<?php
+						//$popular = str_replace(" ", '-', $uri_segment[5]);
 					}
-			?>
-				<li><a href="<?php echo $url_mapper['feed/'] . $popular . '/' . $cat->slug; ?>" class="<?php echo $current; ?> col-md-12"><?php echo $cat->cat_name; ?></a></li>
+					else
+					{
+						?>
+						<li><a href="<?php echo $url_mapper['feed/'] . $cat->slug; ?>/" class="<?php echo $current; ?> col-md-12"><?php echo $cat->cat_name; ?></a></li>
+						<?php
+					}	
+					?>
+				
 			<?php
 				}
 			}

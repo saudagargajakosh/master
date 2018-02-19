@@ -667,7 +667,7 @@ if($current_user->can_see_this('pending.read' , $group)) {
 			<?php if($current_user->can_see_this('groups.read' , $group)) { ?><li><a data-toggle="tab" href="#groups" class="col-md-12"><?php echo $lang['admin-section-groups']; ?></a></li><?php } ?>
 			<?php if($current_user->can_see_this('pages.update' , $group)) { ?><li><a data-toggle="tab" href="#pages" class="col-md-12"><?php echo $lang['admin-section-pages']; ?></a></li><?php } ?>
 			<?php if($current_user->can_see_this('admintopics.read' , $group)) { ?><li><a data-toggle="tab" href="#topics" class="col-md-12"><?php echo $lang['admin-section-topics']; ?></a></li><?php } ?>
-			<?php if($current_user->can_see_this('admanager.read' , $group)) { ?><li><a data-toggle="tab" href="#admanager" class="col-md-12"><?php echo $lang['admin-section-admanager']; ?></a></li><?php } ?>
+			<?php //if($current_user->can_see_this('admanager.read' , $group)) { ?><!-- <li><a data-toggle="tab" href="#admanager" class="col-md-12"><?php echo $lang['admin-section-admanager']; ?></a></li> --><?php //} ?>
 			<?php if($current_user->can_see_this('profanity_filter.update' , $group)) { ?><li><a data-toggle="tab" href="#profanity_filter" class="col-md-12"><?php echo $lang['admin-section-filter']; ?></a></li><?php } ?>
 			
 		</ul>

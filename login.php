@@ -383,7 +383,7 @@ if(isset($_SESSION[$elhash_login]) && $_SESSION[$elhash_login] != "") {
 								<?php //if (isset($facebook_api) && isset($facebook_api['id']) && $facebook_api['id'] != ''  ) { ?><a href="<?php echo $url_mapper['login/']; ?>&provider=google" class="btn btn-danger btn-lg btn-block"><?php echo $lang['login-using_google']; ?></a><?php //} ?>
 								<br>
 								
-								<?php echo $lang['login-register']; if($settings['public_access'] == '1' ) { echo '<br>' . $lang['login-as_guest']; } ?>
+								<?php //echo $lang['login-register']; if($settings['public_access'] == '1' ) { echo '<br>' . $lang['login-as_guest']; } ?>
 								<br><br><?php echo $lang['login-privacy']; ?>
 
 

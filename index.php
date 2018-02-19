@@ -185,9 +185,19 @@ require_once('assets/includes/header.php'); ?>
 		
 		if(isset($_GET['feed']) && $_GET['feed'] != '' ) {
 			$feedreq = $db->escape_value($_GET['feed']);
-			$query = " AND feed LIKE '%{$feedreq}%' ";
+			// echo $feedreq; exit;
+			if($feedreq == 'sme' || $feedreq == 'ngo' || $feedreq == 'job-fair-agencied' || $feedreq == 'rwf' || $feedreq == 'shg' || $feedreq == 'msme' || $feedreq == 'industry' || $feedreq == 'nsdc-vtp' || $feedreq == 'village-head' || $feedreq == 'anganwadi' || $feedreq == 'placement-agency')
+			{
+				$mats_id = Industries::get_industry_id($feedreq);
+				$cat = $mats_id[0]->id;	
+				$query = " AND cat_id LIKE '%{$cat}%' ";
+			}
+			else
+			{
+				$query = " AND feed LIKE '%{$feedreq}%' ";
+			}
 			$tag = Tag::get_tag($feedreq);
-			
+			// echo "<pre>"; print_r($tag); exit;
 			if($tag) {
 				if($tag->avatar) {
 					$img = File::get_specific_id($tag->avatar);
@@ -209,7 +219,7 @@ require_once('assets/includes/header.php'); ?>
 			// print_r($uri_segment);
 			if(!empty($uri_segment[6]))
 			{
-				$breadcrumb = '/'.$uri_segment[6];
+				$breadcrumb = '/'. $uri_segment[6];
 			}
 			else
 			{
@@ -234,8 +244,11 @@ require_once('assets/includes/header.php'); ?>
 			if($current_user->can_see_this('admintopics.update' , $group)) { echo "<a href='{$url_mapper['admin/']}&section=topics&id={$tag->id}&type=edit&hash={$random_hash}&ref={$tag->name}' class='btn btn-sm btn-default '><i class='fa fa-pencil'></i> {$lang['btn-edit']}</a>"; }
 			if($current_user->can_see_this('admintopics.delete' , $group)) { echo "<a href='{$url_mapper['admin/']}&section=topics&id={$tag->id}&type=delete&hash={$random_hash}&ref=index' class='btn btn-sm btn-default ' onclick=\"return confirm('Are you sure you want to delete this record?');\"  ><i class='fa fa-times'></i> {$lang['btn-delete']}</a>"; }
 			echo "</div></h3>";
+			if(!empty($tag))
+			{
+				echo "<p style='color:#A0A0A0'>".strip_tags(nl2br($tag->description))."</p><hr style='clear:both'>";
+			}
 			
-			echo "<p style='color:#A0A0A0'>".strip_tags(nl2br($tag->description))."</p><hr style='clear:both'>";
 		}
 		
 		$per_page = "20";
