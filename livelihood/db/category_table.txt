@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS `p_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cat_name` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+);
